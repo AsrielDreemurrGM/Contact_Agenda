@@ -17,7 +17,7 @@ function adicLinha() {
 
     //verificador de contato ja adicionado
     if (contatos.includes(nomeContato.value)) {
-        alert(`O contato ${nomeContato.value} ja faz parte de sua Agenda de Contatos`);
+        alert(`O contato "${nomeContato.value}" ja faz parte de sua Agenda de Contatos`);
     } else {
         contatos.push(nomeContato.value);
         numeros.push(numeroContato.value);
