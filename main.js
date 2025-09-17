@@ -1,41 +1,38 @@
-const form = document.getElementById('form-contato');
-const contatos = [];
-const numeros = [];
+const form = document.getElementById('contact-form');
+const contacts = [];
+const numbers = [];
 
-var linhasTab = '';
+var tableLines = '';
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    adicLinha(); //Função para adicionar nova linha de conteudo na tabela
-    atualizTab(); //Mostra a versão atualizada do corpo da tabela após inserir a nova linha
+    addLine();
+    updateTable();
 })
 
-function adicLinha() {
-    const nomeContato = document.getElementById('nome-contato');
-    const numeroContato = document.getElementById('numero-contato');
+function addLine() {
+    const contactName = document.getElementById('contact-name');
+    const contactNumber = document.getElementById('contact-number');
 
-    //verificador de contato ja adicionado
-    if (contatos.includes(nomeContato.value)) {
-        alert(`O contato "${nomeContato.value}" ja faz parte de sua Agenda de Contatos`);
+    if (contacts.includes(contactName.value)) {
+        alert(`The contact "${contactName.value}" is already in your Contact Agenda`);
     } else {
-        contatos.push(nomeContato.value);
-        numeros.push(numeroContato.value);
+        contacts.push(contactName.value);
+        numbers.push(contactNumber.value);
 
-    //Parte que adiciona linha nova
-    var linhaNova = "<tr>"; //Linha da tabela = <tr> - Célula da linha = <td>
-    linhaNova += `<td>${nomeContato.value}</td>`;
-    linhaNova += `<td>${numeroContato.value}</td>`;
-    linhaNova += "</tr>";
+    var newLine = "<tr>";
+    newLine += `<td>${contactName.value}</td>`;
+    newLine += `<td>${contactNumber.value}</td>`;
+    newLine += "</tr>";
 
-    linhasTab += linhaNova; //Adiciona a linha nova a variavel que contém todo o corpo da tabela
-    } //Fim do "if"
-     //Limpa o formulário
-    nomeContato.value = '';
-    numeroContato.value = '';
+    tableLines += newLine;
+    }
+    contactName.value = '';
+    contactNumber.value = '';
 }
 
-function atualizTab() {
-    const corpoDaTabela = document.querySelector('tbody'); //Encontra o corpo da tabela
-    corpoDaTabela.innerHTML = linhasTab; //Insere as linhas guardadas na variavel "linhas" no corpo da tabela
+function updateTable() {
+    const tableBody = document.querySelector('tbody');
+    tableBody.innerHTML = tableLines;
 }
